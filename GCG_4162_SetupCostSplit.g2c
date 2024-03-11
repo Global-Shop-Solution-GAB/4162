@@ -1,0 +1,535 @@
+Program.Sub.ScreenSU.Start
+Gui.F_TransferWIP..create
+Gui.F_TransferWIP..caption("Transfer WIP to WIP")
+Gui.F_TransferWIP..size(6160,5040)
+Gui.F_TransferWIP..position(0,0)
+Gui.F_TransferWIP..alwaysontop(False)
+Gui.F_TransferWIP..fontname("Arial")
+Gui.F_TransferWIP..fontsize(8)
+Gui.F_TransferWIP..forecolor(0)
+Gui.F_TransferWIP..BackColor(-2147483633)
+Gui.F_TransferWIP..controlbox(True)
+Gui.F_TransferWIP..maxbutton(False)
+Gui.F_TransferWIP..minbutton(False)
+Gui.F_TransferWIP..mousepointer(0)
+Gui.F_TransferWIP..moveable(True)
+Gui.F_TransferWIP..sizeable(False)
+Gui.F_TransferWIP..ShowInTaskBar(True)
+Gui.F_TransferWIP..titlebar(True)
+Gui.F_TransferWIP..MinX(0)
+Gui.F_TransferWIP..MinY(0)
+Gui.F_TransferWIP..Event(UnLoad,F_TransferWIP_UnLoad)
+Gui.F_TransferWIP.lbl_txtSetup.create(label,"Setup Job",True,1800,200,1,100,135,True,0,Arial,8,-2147483633,0)
+Gui.F_TransferWIP.lbl_txtSetup.LabelStretch(True)
+Gui.F_TransferWIP.txtSetup.create(textbox,"",True,1800,330,1,100,335,True,0,Arial,8,16777215,1)
+Gui.F_TransferWIP.txtSetup.tabstop(True)
+Gui.F_TransferWIP.txtSetup.tabindex(1)
+Gui.F_TransferWIP.cmd_txtSetup.create(button)
+Gui.F_TransferWIP.cmd_txtSetup.Caption("^")
+Gui.F_TransferWIP.cmd_txtSetup.visible(True)
+Gui.F_TransferWIP.cmd_txtSetup.size(330,330)
+Gui.F_TransferWIP.cmd_txtSetup.position(1980,330)
+Gui.F_TransferWIP.cmd_txtSetup.enabled(True)
+Gui.F_TransferWIP.cmd_txtSetup.fontname("Arial")
+Gui.F_TransferWIP.cmd_txtSetup.fontsize(8)
+Gui.F_TransferWIP.cmd_txtSetup.tabstop(True)
+Gui.F_TransferWIP.cmd_txtSetup.tabindex(2)
+Gui.F_TransferWIP.cmd_txtSetup.Event(Click,cmdSetupB_Click)
+Gui.F_TransferWIP.lbl_txtFromWO.create(label,"From Work Order",True,1800,200,1,100,750,True,0,Arial,8,-2147483633,0)
+Gui.F_TransferWIP.lbl_txtFromWO.LabelStretch(True)
+Gui.F_TransferWIP.txtFromWO.create(textbox,"",True,1800,330,1,100,950,True,0,Arial,8,16777215,1)
+Gui.F_TransferWIP.txtFromWO.tabstop(True)
+Gui.F_TransferWIP.txtFromWO.tabindex(3)
+Gui.F_TransferWIP.cmd_txtFromWO.create(button)
+Gui.F_TransferWIP.cmd_txtFromWO.Caption("^")
+Gui.F_TransferWIP.cmd_txtFromWO.visible(True)
+Gui.F_TransferWIP.cmd_txtFromWO.size(330,330)
+Gui.F_TransferWIP.cmd_txtFromWO.position(1980,945)
+Gui.F_TransferWIP.cmd_txtFromWO.enabled(True)
+Gui.F_TransferWIP.cmd_txtFromWO.fontname("Arial")
+Gui.F_TransferWIP.cmd_txtFromWO.fontsize(8)
+Gui.F_TransferWIP.cmd_txtFromWO.tabstop(True)
+Gui.F_TransferWIP.cmd_txtFromWO.tabindex(4)
+Gui.F_TransferWIP.cmd_txtFromWO.Event(Click,cmdFromWOBr_Click)
+Gui.F_TransferWIP.lbl_txtToWO.create(label,"To Work Order",True,1800,200,1,2455,750,True,0,Arial,8,-2147483633,0)
+Gui.F_TransferWIP.lbl_txtToWO.LabelStretch(True)
+Gui.F_TransferWIP.txtToWO.create(textbox,"",True,1800,330,1,2455,950,True,0,Arial,8,16777215,1)
+Gui.F_TransferWIP.txtToWO.tabstop(True)
+Gui.F_TransferWIP.txtToWO.tabindex(5)
+Gui.F_TransferWIP.cmd_txtToWO.create(button)
+Gui.F_TransferWIP.cmd_txtToWO.Caption("^")
+Gui.F_TransferWIP.cmd_txtToWO.visible(True)
+Gui.F_TransferWIP.cmd_txtToWO.size(330,330)
+Gui.F_TransferWIP.cmd_txtToWO.position(4335,945)
+Gui.F_TransferWIP.cmd_txtToWO.enabled(True)
+Gui.F_TransferWIP.cmd_txtToWO.fontname("Arial")
+Gui.F_TransferWIP.cmd_txtToWO.fontsize(8)
+Gui.F_TransferWIP.cmd_txtToWO.tabstop(True)
+Gui.F_TransferWIP.cmd_txtToWO.tabindex(6)
+Gui.F_TransferWIP.cmd_txtToWO.Event(Click,cmdToWObr_Click)
+Gui.F_TransferWIP.lvwRanges.create(listview)
+Gui.F_TransferWIP.lvwRanges.view(3)
+Gui.F_TransferWIP.lvwRanges.visible(True)
+Gui.F_TransferWIP.lvwRanges.size(5805,1995)
+Gui.F_TransferWIP.lvwRanges.position(105,1290)
+Gui.F_TransferWIP.lvwRanges.enabled(True)
+Gui.F_TransferWIP.lvwRanges.fontname("Arial")
+Gui.F_TransferWIP.lvwRanges.fontsize(8)
+Gui.F_TransferWIP.lvwRanges.addlistviewcolumn("From Work Order",2705,0)
+Gui.F_TransferWIP.lvwRanges.addlistviewcolumn("To Work Order",2705,0)
+Gui.F_TransferWIP.lvwRanges.Event(ItemClick,lvwRanges_ItemCick)
+Gui.F_TransferWIP.cmd_lvwRangesAdd.create(button)
+Gui.F_TransferWIP.cmd_lvwRangesAdd.Caption("Add")
+Gui.F_TransferWIP.cmd_lvwRangesAdd.visible(True)
+Gui.F_TransferWIP.cmd_lvwRangesAdd.size(1005,330)
+Gui.F_TransferWIP.cmd_lvwRangesAdd.position(4815,945)
+Gui.F_TransferWIP.cmd_lvwRangesAdd.enabled(True)
+Gui.F_TransferWIP.cmd_lvwRangesAdd.fontname("Arial")
+Gui.F_TransferWIP.cmd_lvwRangesAdd.fontsize(8)
+Gui.F_TransferWIP.cmd_lvwRangesAdd.setinternationalid(7600)
+Gui.F_TransferWIP.cmd_lvwRangesAdd.tabstop(True)
+Gui.F_TransferWIP.cmd_lvwRangesAdd.tabindex(7)
+Gui.F_TransferWIP.cmd_lvwRangesAdd.Event(Click,cmdAdd_Click)
+Gui.F_TransferWIP.cmd_lvwRangesDelete.create(button)
+Gui.F_TransferWIP.cmd_lvwRangesDelete.Caption("Delete")
+Gui.F_TransferWIP.cmd_lvwRangesDelete.visible(True)
+Gui.F_TransferWIP.cmd_lvwRangesDelete.size(1005,330)
+Gui.F_TransferWIP.cmd_lvwRangesDelete.position(105,3540)
+Gui.F_TransferWIP.cmd_lvwRangesDelete.enabled(True)
+Gui.F_TransferWIP.cmd_lvwRangesDelete.fontname("Arial")
+Gui.F_TransferWIP.cmd_lvwRangesDelete.fontsize(8)
+Gui.F_TransferWIP.cmd_lvwRangesDelete.setinternationalid(171500)
+Gui.F_TransferWIP.cmd_lvwRangesDelete.tabstop(True)
+Gui.F_TransferWIP.cmd_lvwRangesDelete.tabindex(8)
+Gui.F_TransferWIP.cmd_lvwRangesDelete.Event(Click,cmdDelete_Click)
+Gui.F_TransferWIP.cmd_lvwRangesClear.create(button)
+Gui.F_TransferWIP.cmd_lvwRangesClear.Caption("Clear")
+Gui.F_TransferWIP.cmd_lvwRangesClear.visible(True)
+Gui.F_TransferWIP.cmd_lvwRangesClear.size(1005,330)
+Gui.F_TransferWIP.cmd_lvwRangesClear.position(1185,3540)
+Gui.F_TransferWIP.cmd_lvwRangesClear.enabled(True)
+Gui.F_TransferWIP.cmd_lvwRangesClear.fontname("Arial")
+Gui.F_TransferWIP.cmd_lvwRangesClear.fontsize(8)
+Gui.F_TransferWIP.cmd_lvwRangesClear.setinternationalid(106700)
+Gui.F_TransferWIP.cmd_lvwRangesClear.tabstop(True)
+Gui.F_TransferWIP.cmd_lvwRangesClear.tabindex(9)
+Gui.F_TransferWIP.cmd_lvwRangesClear.Event(Click,cmdClear_Click)
+Gui.F_TransferWIP.cmdTransfer.create(button)
+Gui.F_TransferWIP.cmdTransfer.Caption("Transfer")
+Gui.F_TransferWIP.cmdTransfer.visible(True)
+Gui.F_TransferWIP.cmdTransfer.size(1005,360)
+Gui.F_TransferWIP.cmdTransfer.position(105,4065)
+Gui.F_TransferWIP.cmdTransfer.enabled(True)
+Gui.F_TransferWIP.cmdTransfer.fontname("Arial")
+Gui.F_TransferWIP.cmdTransfer.fontsize(8)
+Gui.F_TransferWIP.cmdTransfer.Event(Click,cmdTransfer_Click)
+Program.Sub.ScreenSU.End
+
+Variable.Global.iKey.Declare(Long,1)
+Variable.Global.sKey.Declare(String,"0")
+Program.Sub.Preflight.Start
+Variable.Global.skeykey.Declare(String,"s")
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Function.ODBC.Connection!con.OpenConnection(Variable.Ambient.PDSN, Variable.Ambient.PUser, Variable.Ambient.PPass)
+Gui.F_TransferWIP..Show
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4162_SetupCostSplit.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+Program.Sub.cmdSetupB_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdSetupB_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+Variable.Local.sRet.Declare(String)
+Variable.Local.sWO.Declare(String)
+
+'This will generate a browser for the work orders. This work order will be the work order whose cost will be split among the ranges provided in the listview.
+Function.Intrinsic.UI.Browser(1000, "", Variable.Local.sRet)
+
+Function.Intrinsic.Control.If(Variable.Local.sRet, <>, "***CANCEL***")
+	Function.Intrinsic.String.Split(Variable.Local.sRet, "*!*", Variable.Local.sRet)
+	Function.Intrinsic.String.LPad(Variable.Local.sRet(0), "0", 6, Variable.Local.sWO)
+	Function.Intrinsic.String.Build("{0}-{1}", Variable.Local.sWO, Variable.Local.sRet(1), Variable.Local.sWO)
+	Gui.F_TransferWIP.txtSetup.Text(Variable.Local.sWO)
+Function.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdSetupB_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4162_SetupCostSplit.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmdSetupB_Click.End
+
+Program.Sub.cmdFromWOBr_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdFromWOBr_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+Variable.Local.sRet.Declare(String)
+Variable.Local.sWO.Declare(String)
+
+'This will create a browser for the work order that the main order will be split into. The work order will be printed on both the to and from textboxes
+Function.Intrinsic.UI.Browser(1000, "", Variable.Local.sRet)
+
+Function.Intrinsic.Control.If(Variable.Local.sRet, <>, "***CANCEL***")
+	Function.Intrinsic.String.Split(Variable.Local.sRet, "*!*", Variable.Local.sRet)
+	Function.Intrinsic.String.LPad(Variable.Local.sRet(0), "0", 6, Variable.Local.sWO)
+	Function.Intrinsic.String.Build("{0}-{1}", Variable.Local.sWO, Variable.Local.sRet(1), Variable.Local.sWO)
+	Gui.F_TransferWIP.txtFromWO.Text(Variable.Local.sWO)
+	Gui.F_TransferWIP.txtToWO.Text(Variable.Local.sWO)
+Function.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdFromWOBr_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4162_SetupCostSplit.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmdFromWOBr_Click.End
+
+Program.Sub.cmdToWObr_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdToWObr_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Variable.Local.sRet.Declare(String)
+Variable.Local.sSQL.Declare(String)
+Variable.Local.sTitles.Declare(String)
+Variable.Local.sWidths.Declare(Long)
+Variable.Local.sWO.Declare(String)
+
+'If first WO in range has been selected, the textbox for the To WO will have the from WO.
+Variable.Local.sSQL.Set(Variable.Screen.F_TransferWIP!txtToWO.Text)
+Function.Intrinsic.String.Split("Work Order*!*Suffix*!*Part*!*Description", "*!*", Variable.Local.sTitles)
+Function.Intrinsic.String.Split("1000*!*800*!*2000*!*3000", "*!*", Variable.Local.sWidths)
+
+'If To WO is empty, then we pull up the browser for the from WO
+Function.Intrinsic.Control.If(Variable.Local.sSQL.Trim, =, "")
+	Function.Intrinsic.Control.CallSub(cmdfromwobr_click)
+	Function.Intrinsic.Control.ExitSub
+Function.Intrinsic.Control.EndIf
+
+'We use the From WO as the first WO to apear in the To WO browser.
+Function.Intrinsic.String.Split(Variable.Local.sSQL, "-", Variable.Local.sSQL)
+Function.Intrinsic.String.Build("Select JOB, Suffix, Part, Description from V_JOB_HEADER where JOB >= '{0}' ", Variable.Local.sSQL(0), Variable.Local.sSQL)
+Function.Intrinsic.UI.Browser("Select Work Order", "con", Variable.Local.sSQL, Variable.Local.sTitles, Variable.Local.sWidths, Variable.Local.sRet)
+
+Function.Intrinsic.Control.If(Variable.Local.sRet.Trim, <>, "***CANCEL***")
+	Function.Intrinsic.String.Split(Variable.Local.sRet, "*!*", Variable.Local.sRet)
+	Function.Intrinsic.String.LPad(Variable.Local.sRet(0), "0", 6, Variable.Local.sWO)
+	Function.Intrinsic.String.Build("{0}-{1}", Variable.Local.sWO, Variable.Local.sRet(1), Variable.Local.sWO)
+	Gui.F_TransferWIP.txtToWO.Text(Variable.Local.sWO)
+Function.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdToWObr_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4162_SetupCostSplit.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmdToWObr_Click.End
+
+Program.Sub.cmdAdd_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdAdd_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+Variable.Local.sFrom.Declare(String)
+Variable.Local.sTo.Declare(String)
+Variable.Local.sRet.Declare(String)
+
+Variable.Local.sFrom.Set(Variable.Screen.F_TransferWIP!txtFromWO.Text)
+Variable.Local.sTo.Set(Variable.Screen.F_TransferWIP!txtToWO.Text)
+
+Function.Intrinsic.Control.If(Variable.Local.sFrom.Trim, =, "")
+	Function.Intrinsic.Control.ExitSub
+Function.Intrinsic.Control.EndIf
+
+'Adds range to ListView and clears WO textboxes.
+Function.Intrinsic.String.Build("{0}*!*{1}", Variable.Local.sFrom, Variable.Local.sTo, Variable.Local.sRet)
+Function.Intrinsic.String.Split(Variable.Local.sRet, "*!*", Variable.Local.sRet)
+Function.Intrinsic.String.SortAsc(Variable.Local.sRet, Variable.Local.sRet)
+
+Gui.F_TransferWIP.lvwRanges.AddListItem(Variable.Local.sRet(0), Variable.Local.sRet(0))
+Gui.F_TransferWIP.lvwRanges.SetListItemSubItemText(Variable.Local.sRet(0), 1, Variable.Local.sRet(1))
+Gui.F_TransferWIP.txtFromWO.Text("")
+Gui.F_TransferWIP.txtToWO.Text("")
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdAdd_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4162_SetupCostSplit.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmdAdd_Click.End
+
+Program.Sub.cmdDelete_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdDelete_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Global.sKey will be set in the click event, subroutine lvwRanges_ItemCick. We will delete that row from the list
+Function.Intrinsic.Control.If(Variable.Global.sKey, <>, "")
+	Gui.F_TransferWIP.lvwRanges.RemoveItem(Variable.Global.sKey)
+	Gui.F_TransferWIP.txtFromWO.Text("")
+	Gui.F_TransferWIP.txtToWO.Text("")
+Function.Intrinsic.Control.EndIf
+
+Variable.Global.sKey.Set("")
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdDelete_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4162_SetupCostSplit.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmdDelete_Click.End
+
+Program.Sub.cmdClear_Click.Start
+Gui.F_TransferWIP.lvwRanges.ClearItems
+
+Program.Sub.cmdClear_Click.End
+
+Program.Sub.cmdTransfer_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdTransfer_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+Variable.Local.sMainWO.Declare(String)
+Variable.Local.sFromWO.Declare(String)
+Variable.Local.sFromSuff.Declare(String)
+Variable.Local.sToWO.Declare(String)
+Variable.Local.sToSuff.Declare(String)
+Variable.Local.sWOS.Declare(String)
+Variable.Local.sDests.Declare(String)
+Variable.Local.sSql.Declare(String)
+Variable.Local.fTotal.Declare(Float)
+Variable.Local.fMade.Declare(Float)
+Variable.Local.iCount.Declare(Long)
+Variable.Local.iOrdinal.Declare(Long)
+Variable.Local.bArrrrrr.Declare(Boolean)
+Variable.Local.fPartCost.Declare(Float)
+Variable.Local.sWOArray.Declare(String)
+Variable.Local.sRet.Declare(String)
+Variable.Local.bFlag.Declare(Boolean)
+Variable.Local.fAdditions.Declare(Float)
+Variable.Local.fVariance.Declare(Float)
+
+Variable.Local.sMainWO.Set(Variable.Screen.F_TransferWIP!txtSetup.Text)
+Gui.F_TransferWIP.lvwRanges.RetrieveAllListItems(Variable.Local.sDests)
+
+Function.Intrinsic.Control.If(Variable.Local.sMainWO.Trim, =, "")
+	Function.Intrinsic.UI.Msgbox("Select a Work Order to split.", "Lack of input")
+	Function.Intrinsic.Control.ExitSub
+Function.Intrinsic.Control.ElseIf(Variable.Local.sDests, =, "***NORETURN***")
+	Function.Intrinsic.UI.Msgbox("Select Work Orders to split into", "Lack of input")
+	Function.Intrinsic.Control.ExitSub
+Function.Intrinsic.Control.EndIf
+
+'Get Main Work Order information to be transfered to the other Work Orders
+Function.Intrinsic.String.Split(Variable.Local.sMainWO, "-", Variable.Local.sMainWO)
+Function.Intrinsic.String.Build("Select JOB, SUFFIX, QTY_ORDER, AMT_PRICE_PER_UNIT, AMT_MATERIAL, AMT_LABOR, AMT_OVERHEAD from V_JOB_HEADER where JOB = '{0}' and SUFFIX = '{1}' ", Variable.Local.sMainWO(0).Trim, Variable.Local.sMainWO(1).Trim, Variable.Local.sSql)
+Function.ODBC.Connection!con.OpenRecordsetRO("rstmain", Variable.Local.sSql)
+Function.Intrinsic.Control.If(Variable.ODBC.con!rstmain.EOF, <>, False)
+	Function.Intrinsic.String.Build("Work Order '{0}'-'{1}' was not found", Variable.Local.sMainWO(0), Variable.Local.sMainWO(1), Variable.Local.sSql)
+	Function.Intrinsic.UI.Msgbox(Variable.Local.sSql, "Work Order Error")
+	Function.Intrinsic.Control.ExitSub
+Function.Intrinsic.Control.EndIf
+
+Gui.F_TransferWIP..Visible(False)
+
+'We need to calculate the cost of an individual part
+Variable.Local.fMade.Set(Variable.ODBC.con!rstmain.FieldValFloat!QTY_ORDER)
+Function.Intrinsic.Math.Add(Variable.ODBC.con!rstmain.FieldValFloat!AMT_MATERIAL, Variable.ODBC.con!rstmain.FieldValFloat!AMT_LABOR, Variable.ODBC.con!rstmain.FieldValFloat!AMT_OVERHEAD, Variable.Local.fPartCost)
+Function.Intrinsic.Math.Div(Variable.Local.fPartCost, Variable.Local.fMade, Variable.Local.fPartCost)
+
+Function.Data.DataTable.Create("WorkOrders", True)
+Function.Data.DataTable.AddColumn("WorkOrders", "PK", "String")
+Function.Data.DataTable.AddColumn("WorkOrders", "JOB", "String")
+Function.Data.DataTable.AddColumn("WorkOrders", "SUFFIX", "String")
+Function.Data.DataTable.AddColumn("WorkOrders", "QTY_ORDER", "Float")
+
+Function.Data.DataTable.SetPK("WorkOrders", "PK")
+
+'Pull the work orders needed to be transferred to into a data table
+Function.Intrinsic.String.Split(Variable.Local.sDests, "*!*", Variable.Local.sDests)
+Function.Intrinsic.Control.For(Variable.Local.iCount, 0, Variable.Local.sDests.UBound, 1)
+	Gui.F_TransferWIP.lvwRanges.RetrieveItemOrdinal(Variable.Local.sDests(Variable.Local.iCount), Variable.Local.iOrdinal)
+	Variable.Local.sWOS.Set(Variable.Screen.F_TransferWIP!lvwRanges.ListItemTextExtended(Variable.Local.iOrdinal))
+	Function.Intrinsic.String.Split(Variable.Local.sWOS, "*!*", Variable.Local.sWOS)
+	Function.Intrinsic.String.Split(Variable.Local.sWOS(0), "-", Variable.Local.sFromWO)
+	Function.Intrinsic.String.Split(Variable.Local.sWOS(1), "-", Variable.Local.sToWO)
+	
+	Function.Intrinsic.String.Build("Select JOB+SUFFIX as PK, JOB, SUFFIX, QTY_ORDER from JOB_HEADER where JOB+SUFFIX between '{0}'+'{1}' and '{2}'+'{3}'order by JOB asc, SUFFIX asc ", Variable.Local.sFromWO(0), Variable.Local.sFromWO(1), Variable.Local.sToWO(0), Variable.Local.sToWO(1), Variable.Local.sSql)	
+	Function.Data.DataTable.CreateFromSql("TempWO", "con", Variable.Local.sSql, True)	
+	Function.Data.DataTable.SetPK("TempWO", "PK")
+	
+	'Merging mode 4 should take care of duplicates, but I cannot get it to work correctly, so we will be using mode 2. We are going to continue assuming there are no duplicate work orders in the table.
+	Function.Data.DataTable.Merge("TempWO", "WorkOrders", True, 2)
+	Function.Data.DataTable.Close("TempWO")	
+Function.Intrinsic.Control.Next(Variable.Local.iCount)
+
+'Calculate number of total parts to be transfered
+Function.Data.DataTable.AddExpressionColumn("WorkOrders", "Summation", "Float", "Sum(QTY_ORDER)")
+
+Variable.Local.fTotal.Set(Variable.DataTable.WorkOrders(Variable.DataTable.WorkOrders.RowCount--).Summation!FieldValFloat)
+Function.Intrinsic.Math.Div(Variable.ODBC.con!rstmain.FieldValFloat!QTY_ORDER, Variable.Local.fTotal, Variable.Local.fVariance)
+
+Function.Intrinsic.String.Build("{0}*QTY_ORDER", Variable.Local.fPartCost, Variable.Local.sSql)
+Function.Data.DataTable.AddExpressionColumn("WorkOrders", "Cost", "Float", Variable.Local.sSql)
+
+Function.Intrinsic.String.Build("{0}*QTY_ORDER", Variable.Local.fVariance, Variable.Local.sSql)
+Function.Data.DataTable.AddExpressionColumn("WorkOrders", "Qty_processed", "Float", Variable.Local.sSql)
+
+Function.Intrinsic.Control.CallSub(wiptowip, "sCost", Variable.Local.fPartCost)
+Function.Intrinsic.UI.Msgbox("Transfer Complete")
+Function.Intrinsic.Control.CallSub(refresh)
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdTransfer_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4162_SetupCostSplit.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmdTransfer_Click.End
+
+Program.Sub.F_TransferWIP_UnLoad.Start
+Function.ODBC.Connection!con.Close
+Function.Intrinsic.Control.End
+
+Program.Sub.F_TransferWIP_UnLoad.End
+
+Program.Sub.lvwRanges_ItemCick.Start
+'Sets the Global.sKey that will be used to delete the row.
+Gui.F_TransferWIP.lvwRanges.RetrieveSelectedListitems(Variable.Global.sKey)
+
+Program.Sub.lvwRanges_ItemCick.End
+
+Program.Sub.WIPtoWIP.Start
+F.Intrinsic.Control.SetErrorHandler("WIPtoWIP_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+Variable.Local.iCount.Declare(Long)
+Variable.Local.fLimit.Declare(Float)
+Variable.Local.fAdded.Declare(Float)
+Variable.Local.fCost.Declare(Float)
+Variable.Local.sWOFrom.Declare(String)
+Variable.Local.sSuffFrom.Declare(String)
+Variable.Local.sWOTo.Declare(String)
+Variable.Local.sSuffTo.Declare(String)
+Variable.Local.sWOSeq.Declare(String)
+Variable.Local.sDateDate.Declare(String)
+Variable.Local.fPrice.Declare(Float)
+Variable.Local.fQty.Declare(Float)
+Variable.Local.sParam.Declare(String)
+Variable.Local.sClosed.Declare(String)
+
+Variable.Local.sWOFrom.Set(Variable.ODBC.con!rstmain.FieldValTrim!JOB)
+Variable.Local.sSuffFrom.Set(Variable.ODBC.con!rstmain.FieldValTrim!SUFFIX)
+Variable.Local.sWOSeq.Set("995000")
+Function.Intrinsic.String.DateString(Variable.Ambient.Date, Variable.Local.sDateDate)
+Variable.Local.fPrice.Set(Variable.ODBC.con!rstmain.FieldValFloat!AMT_PRICE_PER_UNIT)
+Variable.Local.fCost.Set(Variable.Args.sCost)
+Variable.Local.sClosed.Set("")
+
+'Loop Through Data Table and transfer the cost and quantities of each line
+Function.Intrinsic.Control.For(Variable.Local.iCount, 0, Variable.DataTable.WorkOrders.RowCount--, 1)
+	Variable.Local.sWOTo.Set(Variable.DataTable.WorkOrders(Variable.Local.iCount).JOB!FieldValTrim)
+	Variable.Local.sSuffTo.Set(Variable.DataTable.WorkOrders(Variable.Local.iCount).SUFFIX!FieldValTrim)
+	Function.Intrinsic.Control.If(Variable.Local.iCount, =, Variable.DataTable.WorkOrders.RowCount--)
+		Variable.Local.sClosed.Set("Y")
+	Function.Intrinsic.Control.EndIf
+	Variable.Local.fQty.Set(Variable.DataTable.WorkOrders(Variable.Local.iCount).Qty_Processed!FieldValFloat)
+	Function.Intrinsic.String.Build("{0}!*!{1}!*!{2}!*!{3}!*!{4}!*!{5}",Variable.Local.sWOFrom, Variable.Local.sSuffFrom, Variable.Local.sWOTo, Variable.Local.sSuffTo, Variable.Local.sWOSeq, Variable.Local.sDateDate, Variable.Local.sParam)
+	Function.Intrinsic.String.Build("{0}!*!{1}!*!{2}!*!{3}!*!{4}", Variable.Local.sParam, Variable.Local.sClosed, Variable.Local.fQty, Variable.Local.fCost, Variable.Local.fPrice, Variable.Local.sParam)
+	'This is the callwrapper that recreates Shop Floor Control>Transactions>Transfer WIP to WIP
+	Function.Global.General.CallWrapperSync(2060, Variable.Local.sParam)	
+Function.Intrinsic.Control.Next(Variable.Local.iCount)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("WIPtoWIP_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4162_SetupCostSplit.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.WIPtoWIP.End
+
+Program.Sub.Refresh.Start
+'Clear out screen and close table and recordset
+Gui.F_TransferWIP.txtFromWO.Text("")
+Gui.F_TransferWIP.txtToWO.Text("")
+Gui.F_TransferWIP.txtSetup.Text("")
+Gui.F_TransferWIP.lvwRanges.ClearItems
+
+Function.ODBC.con!rstmain.Close
+Function.Data.DataTable.Close("WorkOrders")
+
+Gui.F_TransferWIP..Show
+Program.Sub.Refresh.End
+
+Program.Sub.Comments.Start
+${$0$}$WIP to WIP one WO to multiple WO$}$SISCO$}$9/15/2016 12:56:29 PM$}$False
+${$3$}$0$}$$}$0$}$-1$}$$}$12:00:00 AM$}$This project was quoted by Strider Smith and coded by Sisco Quiroz
+September 2016.
+
+This code will run from a custom menu item under Production>Shop Floor Control>Transactions>Transfer WIP to WIP for multiple jobs.
+Program.Sub.Comments.End
+
